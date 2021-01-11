@@ -1,0 +1,580 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "InstantOCR.py",
+      "provenance": [],
+      "collapsed_sections": [],
+      "toc_visible": true,
+      "mount_file_id": "1v7PPexH0k4_Gj4ZXBuPTcuh6KHS2VgO5",
+      "authorship_tag": "ABX9TyOBPeYbQnd3fscNlMwZKL+i",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "widgets": {
+      "application/vnd.jupyter.widget-state+json": {
+        "06a2e4a08c68494f8a5d98c2bee59977": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HBoxModel",
+          "state": {
+            "_view_name": "HBoxView",
+            "_dom_classes": [],
+            "_model_name": "HBoxModel",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "box_style": "",
+            "layout": "IPY_MODEL_09488b808ec84806b764ec49d791ea7f",
+            "_model_module": "@jupyter-widgets/controls",
+            "children": [
+              "IPY_MODEL_1d51d519b9dd4dccbd1cfdd61cee7ad0",
+              "IPY_MODEL_c1aa73084f664c449efcd23fb70fab0e"
+            ]
+          }
+        },
+        "09488b808ec84806b764ec49d791ea7f": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "1d51d519b9dd4dccbd1cfdd61cee7ad0": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "FloatProgressModel",
+          "state": {
+            "_view_name": "ProgressView",
+            "style": "IPY_MODEL_e09fb939f9c349aa87fd1ed3d9497974",
+            "_dom_classes": [],
+            "description": "Dl Completed...: 100%",
+            "_model_name": "FloatProgressModel",
+            "bar_style": "success",
+            "max": 4,
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": 4,
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "orientation": "horizontal",
+            "min": 0,
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_2d5d22723401438eb0f9bc30384064f3"
+          }
+        },
+        "c1aa73084f664c449efcd23fb70fab0e": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "HTMLModel",
+          "state": {
+            "_view_name": "HTMLView",
+            "style": "IPY_MODEL_cc7f00b51bec4461a8fb2d58d011663d",
+            "_dom_classes": [],
+            "description": "",
+            "_model_name": "HTMLModel",
+            "placeholder": "​",
+            "_view_module": "@jupyter-widgets/controls",
+            "_model_module_version": "1.5.0",
+            "value": " 4/4 [00:02&lt;00:00,  1.76 file/s]",
+            "_view_count": null,
+            "_view_module_version": "1.5.0",
+            "description_tooltip": null,
+            "_model_module": "@jupyter-widgets/controls",
+            "layout": "IPY_MODEL_86fc2e2818fb43c1b7cd7e9eb8d89192"
+          }
+        },
+        "e09fb939f9c349aa87fd1ed3d9497974": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "ProgressStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "ProgressStyleModel",
+            "description_width": "initial",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "bar_color": null,
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "2d5d22723401438eb0f9bc30384064f3": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        },
+        "cc7f00b51bec4461a8fb2d58d011663d": {
+          "model_module": "@jupyter-widgets/controls",
+          "model_name": "DescriptionStyleModel",
+          "state": {
+            "_view_name": "StyleView",
+            "_model_name": "DescriptionStyleModel",
+            "description_width": "",
+            "_view_module": "@jupyter-widgets/base",
+            "_model_module_version": "1.5.0",
+            "_view_count": null,
+            "_view_module_version": "1.2.0",
+            "_model_module": "@jupyter-widgets/controls"
+          }
+        },
+        "86fc2e2818fb43c1b7cd7e9eb8d89192": {
+          "model_module": "@jupyter-widgets/base",
+          "model_name": "LayoutModel",
+          "state": {
+            "_view_name": "LayoutView",
+            "grid_template_rows": null,
+            "right": null,
+            "justify_content": null,
+            "_view_module": "@jupyter-widgets/base",
+            "overflow": null,
+            "_model_module_version": "1.2.0",
+            "_view_count": null,
+            "flex_flow": null,
+            "width": null,
+            "min_width": null,
+            "border": null,
+            "align_items": null,
+            "bottom": null,
+            "_model_module": "@jupyter-widgets/base",
+            "top": null,
+            "grid_column": null,
+            "overflow_y": null,
+            "overflow_x": null,
+            "grid_auto_flow": null,
+            "grid_area": null,
+            "grid_template_columns": null,
+            "flex": null,
+            "_model_name": "LayoutModel",
+            "justify_items": null,
+            "grid_row": null,
+            "max_height": null,
+            "align_content": null,
+            "visibility": null,
+            "align_self": null,
+            "height": null,
+            "min_height": null,
+            "padding": null,
+            "grid_auto_rows": null,
+            "grid_gap": null,
+            "max_width": null,
+            "order": null,
+            "_view_module_version": "1.2.0",
+            "grid_template_areas": null,
+            "object_position": null,
+            "object_fit": null,
+            "grid_auto_columns": null,
+            "margin": null,
+            "display": null,
+            "left": null
+          }
+        }
+      }
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/alphacentauri718/InstantOCR/blob/main/InstantOCR_py\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "fcBqfbdMfXo6"
+      },
+      "source": [
+        "# ***This algorithm will first have to be trainined for page error identification, chronology identification, field identification, character identification AND context identification. See this script first to make a plan for training. After  satisfactory weights are found for each training category, implement this script to complete the project.***"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "A4WHbXRhJp7j"
+      },
+      "source": [
+        "# **Import libraries and MNIST datasets**\n",
+        "Documentation for the MNIST dataset is here:\n",
+        "https://www.tensorflow.org/datasets/catalog/mnist"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 188,
+          "referenced_widgets": [
+            "06a2e4a08c68494f8a5d98c2bee59977",
+            "09488b808ec84806b764ec49d791ea7f",
+            "1d51d519b9dd4dccbd1cfdd61cee7ad0",
+            "c1aa73084f664c449efcd23fb70fab0e",
+            "e09fb939f9c349aa87fd1ed3d9497974",
+            "2d5d22723401438eb0f9bc30384064f3",
+            "cc7f00b51bec4461a8fb2d58d011663d",
+            "86fc2e2818fb43c1b7cd7e9eb8d89192"
+          ]
+        },
+        "id": "6p0_Z4BNsuzr",
+        "outputId": "d3ab5dfc-359c-4909-f917-8d19bcf86dff"
+      },
+      "source": [
+        "!pip install -q tfds-nightly tensorflow matplotlib\n",
+        "\n",
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "import tensorflow as tf\n",
+        "import tensorflow_datasets as tfds\n",
+        "\n",
+        "#training data\n",
+        "ds = tfds.load('mnist', split='train', shuffle_files=True)\n",
+        "assert isinstance(ds, tf.data.Dataset)\n",
+        "print(ds)\n",
+        "\n",
+        "#test data\n",
+        "ds = tfds.load('mnist', split='test', shuffle_files=True)\n",
+        "assert isinstance(ds, tf.data.Dataset)\n",
+        "print(ds)"
+      ],
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "\u001b[K     |████████████████████████████████| 3.7MB 5.7MB/s \n",
+            "\u001b[?25h\u001b[1mDownloading and preparing dataset 11.06 MiB (download: 11.06 MiB, generated: 21.00 MiB, total: 32.06 MiB) to /root/tensorflow_datasets/mnist/3.0.1...\u001b[0m\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "application/vnd.jupyter.widget-view+json": {
+              "model_id": "06a2e4a08c68494f8a5d98c2bee59977",
+              "version_minor": 0,
+              "version_major": 2
+            },
+            "text/plain": [
+              "HBox(children=(FloatProgress(value=0.0, description='Dl Completed...', max=4.0, style=ProgressStyle(descriptio…"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          }
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "\n",
+            "\n",
+            "\u001b[1mDataset mnist downloaded and prepared to /root/tensorflow_datasets/mnist/3.0.1. Subsequent calls will reuse this data.\u001b[0m\n",
+            "<_OptionsDataset shapes: {image: (28, 28, 1), label: ()}, types: {image: tf.uint8, label: tf.int64}>\n",
+            "<_OptionsDataset shapes: {image: (28, 28, 1), label: ()}, types: {image: tf.uint8, label: tf.int64}>\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "WjbhoCPe-Q6c"
+      },
+      "source": [
+        "# **General sheet problems (page error identification)**\n",
+        "This test checks for stray marks or other abornamilties (rips, crinkles, etc) on all the images in the set. If this test fails, we already know not to use this for training because this data set is only going to misguide the training algorithm. Our training sets will all be clean.\n",
+        "\n",
+        "**Inputs**:\n",
+        "\n",
+        "Whole single sheet images\n",
+        "\n",
+        "**Program**:\n",
+        "\n",
+        "Check for tears, scribbles, smudges, other problems\n",
+        "\n",
+        "**Outputs**:\n",
+        "\n",
+        "Page images and numbers of unusable forms (with huge tears, crinkled, smears, or scribbles)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "7jHs4lSI-S0P"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "LjXBwVvaAYxe"
+      },
+      "source": [
+        "# **Pages in Order (Chronology identification)**\n",
+        "This first checks the image set if the pages are all in order and there are no stray pages. If there aren't the test passes and if there are, the test fails and it returns page numbers which are stray and asks for them to be reuploaded so there is total data integrity.\n",
+        "\n",
+        "**Inputs**:\n",
+        "\n",
+        "page images (all analyzed together for order accuracy)\n",
+        "\n",
+        "**Program**: \n",
+        "\n",
+        "Detect sets of forms (each form will come in a set, set of 1 page, maybe 2, maybe 4). The sets have to be detected (beginning page and end page as well) and then checked for completeness.\n",
+        "\n",
+        "**Outputs**:\n",
+        "\n",
+        "Page images and numbers of pages which are something but should be something else."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "0LGCc5DpIV5R"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "sntV-dda-oEt"
+      },
+      "source": [
+        "# **Field/ Column identification**\n",
+        "This script attempts to read the fields. It trains a little more everytime someone uses OpenCV and the data is clean/ not made by a bad actor. As this gets perfected, it will someday render OpenCV obsolete and the algorithm will be able to identify fields and auto-populate columns in the final output file.\n",
+        "\n",
+        "**Inputs**:\n",
+        "\n",
+        "Whole single page image \n",
+        "\n",
+        "**Program**:\n",
+        "\n",
+        "Detect and seperate the fields, create isolated images of fields, label these images of their field\n",
+        "\n",
+        "**Outputs**:\n",
+        "\n",
+        "Blockletter field images with labels"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "JKJszw_FIWhg"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "r4-Po4rj-Lo5"
+      },
+      "source": [
+        "# **Data Type Identification**\n",
+        "\n",
+        "This script attempts to find out if the field is boolean or not. The field will either take text input, numerical input, numerical AND text input, or boolean. Boolean values are typically marked with a totally shaded bubble or an \"X\" or checkmark inside the bubble. Text values typically have boxes and not bubbles.\n",
+        "\n",
+        "Later on SQL teams can ask us to enforce data integrity rules, so our algorithm can spot things like 2 choices being filled when only 1 is allowed to be. We won't worry about this though because for now, SQL teams can do that themselves easily too.\n",
+        "\n",
+        "**Inputs**:\n",
+        "\n",
+        "Field labels returned from previous code block\n",
+        "\n",
+        "**Program**: \n",
+        "\n",
+        "Sort what kind of data type they are (int, char, bool, etc)\n",
+        "\n",
+        "**Output**:\n",
+        "\n",
+        "datatype labels for all fields"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "gN5rnj5_IXSR"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "gI6-yYaN-m1R"
+      },
+      "source": [
+        "# **Character/ Int Identification**\n",
+        "This script will identify the characters and add them properly (exactly as entered). It also flags improperly written or unclear text.\n",
+        "\n",
+        "**Inputs**: \n",
+        "\n",
+        "Field images\n",
+        "\n",
+        "**Program**:\n",
+        "\n",
+        "Identifies each character within a single block. If unsure, it flags this field and character.\n",
+        "\n",
+        "**Output**: \n",
+        "\n",
+        "Digital reading of field or flag details"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kfi5WkYWVQu3"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "YE7o4Hf4U1g6"
+      },
+      "source": [
+        "# **Context Rules Filtration**\n",
+        "Context training for words to help the algorithm look at the complete word to determine what kind of letter should be selected in case of confusion. For example, if the handwriter writes \"SHIRLY\" (in all capitals), the algorithm should not confuse the uppercase I with a lowercase l.\n",
+        "\n",
+        "**Input**:\n",
+        "\n",
+        "Field image of field with unknown character\n",
+        "\n",
+        "**Program**: \n",
+        "\n",
+        "Start with pool of potentials, filter away potentials of wrong datatype (can't be a handwritten 1 ,that's the wrong datatype for field of \"First Name\"). Next train algorithm to know that after 2 consonants and a consonant in index 4 (R), a vowel should be in index (3), so it's likely not a lowercase L. In the case that it can't use a context rule to determine what it is, nothing is returned and it jumps to the next error. If it does make a guess, the error is removed from the error log.\n",
+        "\n",
+        "Eventually the error log is also outputted to the user.\n",
+        "\n",
+        "**Output**:\n",
+        "\n",
+        "Remaining error log"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "QZq0X5MbIbrR"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
